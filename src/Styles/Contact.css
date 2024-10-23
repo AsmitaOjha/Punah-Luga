@@ -1,0 +1,66 @@
+.Main_contact_container{
+    height:100vh;
+    position: relative;
+    
+    
+
+
+}
+.background-image {
+    position: absolute; /* Position behind content */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the entire area */
+    opacity: 0.7; /* Adjust opacity for less transparency */
+    z-index: 1; /* Ensure it stays behind other content */
+}
+.contact-box {
+    position: relative;
+    background-color: rgb(43, 144, 226);
+    height: 75vh;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    padding-top: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Box shadow */
+    border: 7px solid rgb(7, 16, 99);
+    z-index: 2; /* Ensure it stays above the background */
+
+
+
+}
+.contact-box h1{
+    color:white;
+    font-weight: 600;
+}
+
+/* Style for form inputs to be 40% of the contact-box width */
+.form-floating {
+    width: 80%; /* Set width to 40% */
+    margin: 0 auto; /* Center the input fields */
+    
+}
+.form-floating textarea {
+    height: 200px; /* Adjust height as needed */
+   
+}
+/* Other existing styles remain unchanged */
+
+.btn-primary {
+    background-color: rgb(204, 60, 84) !important; /* Default color */
+    border: none !important; /* Remove default border */
+    color: rgb(255, 255, 255) !important; /* Text color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.btn-primary:hover {
+    background-color: green !important; /* Color when hovering */
+}
+
+.btn-primary:active {
+    background-color: darkgreen !important; /* Color when clicking */
+}

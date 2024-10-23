@@ -1,0 +1,56 @@
+/* Navbar.css */
+
+/* Ensure the navbar has full width */
+.navbar {
+  
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Align the nav links and search box in the same row */
+.navbar-collapse {
+    display: flex; /* Use flexbox for the collapsed part */
+    align-items: center; /* Center items vertically */
+}
+
+
+
+/* Adjust the button height to match the search input */
+.btn-outline-success {
+    height: 35px; /* Same height as input */
+    padding: 5px 10px; /* Adjust padding for better appearance */
+    font-size: 14px; /* Optional: adjust font size */
+}
+
+/* Additional styles for the navbar */
+.nav-pills .nav-link {
+
+    height: 35px; /* Set a custom height for nav links */
+    display: flex; /* Ensure flexbox for vertical alignment */
+    align-items: center; 
+    transition: color 0.3s;
+}
+/* Custom styles for navbar links */
+.navbar-nav .nav-link {
+    font-size: 16px; /* Default font size */
+    font-weight: normal; /* Default font weight */
+    color: #000 !important; /* Default link color */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect for individual nav links */
+  .navbar-nav .nav-link:hover {
+   /* Make font bold on hover */
+    color: rgb(199, 15, 168) !important; /* Change color to orange on hover */
+  }
+
+.navbar-toggler{
+    border:none;
+}
+.navbar-toggler:focus{
+    outline:none;
+}
+@media (max-width: 768px) {
+    .nav-pills .nav-link{
+        margin-bottom: 10px;
+    }
+}

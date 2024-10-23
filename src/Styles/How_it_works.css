@@ -1,0 +1,169 @@
+.HTW-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Ensures space between child divs */
+  padding: 0 10px; /* Adds padding on left and right of container */
+  box-sizing: border-box;
+
+}
+
+
+.How_it_works {
+    flex:6;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    margin: 0 10px; /* Adds gaps on both sides (left and right) */
+    align-items: center;
+  }
+.How_it_works h1{
+    text-align:center;
+
+}
+  
+  .step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F7F7F7; /* Default background color */
+    border-radius: 50px;
+    width:70%;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: background-color 1.5s ease; /* Add transition for smooth background change */
+    padding-left: 60px; /* Create space for the number */
+  }
+  
+  .step-number {
+    position: absolute;
+    left: 20px; /* Align numbers to the left side */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D3D3D3; /* Faded color for inactive steps */
+    color: #fff;
+
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    transition: background-color 1.5s ease, color 1.5s ease;
+  }
+  
+  /* Highlight active and previous steps */
+  .step.active .step-number {
+    background-color: #2F4F4F; /* Dark green for active step number */
+    color: #fff;
+  }
+  
+  .step.active {
+    background-color: #c46a43; /* Brownish color for the active step background */
+  }
+  
+  /* Handle fading steps on scroll back up */
+  .step:not(.active) {
+    background-color: #F7F7F7; /* Revert to original background when inactive */
+  }
+  
+  .step h5 {
+    font-family: "Varela Round", sans-serif;
+    /* font-size: 18px;  */
+    color: #b6ebeb;
+    
+  }
+  .please-donate{
+    flex:4;
+    padding: 10px; /* Optional: for visualization */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+    /* border: 1px solid #000; */
+    border-radius: 15px; /* Smooth edges, can adjust the value */
+    background-color: #c4d7d8;
+    padding: 10px;
+    margin: 20px 20px; /* Adds gaps on both sides (left and right) */
+
+  }
+  .please-donate img{
+    display: block;
+    border-radius: 20%;
+    margin: 20px auto;
+    width:550px;
+    height: auto;
+
+  }
+  .please-donate h3{
+    padding: 5 30px;
+    margin: 0;
+    text-align: left;
+    padding: 10px 30px;
+  }
+  .please-donate ul{
+    list-style-type: none;
+    padding: 10px 30px;
+    margin: 0; /* This centers the list horizontally */
+    display: block; /* Ensures the list is treated as a block element */
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    .HTW-container {
+      flex-direction: column; /* Stack the elements vertically on tablets */
+    }
+  
+    .How_it_works {
+      flex: unset;
+      width: 100%;
+      padding: 20px;
+      margin: 0; /* Remove the side margins for full width */
+    }
+  
+    .step {
+      width: 90%; /* Adjust step width to fit tablet screens */
+      padding-left: 50px; /* Adjust padding */
+    }
+  
+    .please-donate {
+      width: 100%;
+      margin: 20px 0; /* Stack and remove extra side margins */
+    }
+  
+    .please-donate img {
+      width: 400px; /* Reduce the image width for tablet */
+    }
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media screen and (max-width: 768px) {
+    .step {
+      flex-direction: column;
+      padding-left: 40px;
+    }
+  
+    .step-number {
+      left: 10px;
+    }
+    .HTW-container{
+      flex-direction: column;
+    }
+    .please-donate img{
+      display: block;
+      border-radius: 20%;
+      margin: 20px auto;
+      width: 370px;
+  
+    }
+    .step {
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F7F7F7; /* Default background color */
+      border-radius: 50px;
+      width:90%;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: background-color 1.5s ease; /* Add transition for smooth background change */
+      padding-left: 60px; /* Create space for the number */
+    }
+  }
+  

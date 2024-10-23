@@ -1,0 +1,108 @@
+/* Home_page.css */
+.Main-home_container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Background image styles */
+.background-image {
+    position: absolute; /* Position behind content */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the entire area */
+    opacity: 0.7; /* Adjust opacity for less transparency */
+    z-index: 1; /* Ensure it stays behind other content */
+}
+
+/* Adjust the Home_container styles */
+.Home_container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    align-items: center; /* Vertically center */
+    justify-content: space-between; /* Space between content and image */
+    padding: 0 50px; /* Add padding for a cleaner look */
+    margin-top: 20px; /* Space between Navbar and Home_container */
+    z-index: 2; /* Ensure it stays above the background */
+}
+
+/* Content styles */
+.content {
+    z-index: 2; /* Ensure content is above the background */
+    color: white; /* Text color for better visibility */
+    padding: 20px;
+    flex: 1; /* Allow text section to take space on the left */
+    /* border: 2px solid black; */
+    /* height:100vh;
+    align-items: center; */
+}
+.content h1 {
+    color: black; /* Set heading color */
+}
+.content .btn-primary {
+    background-color: rgb(197, 100, 116); /* Your desired color */
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adjust these values as needed */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Include transition for color */
+}
+
+/* Hover state */
+.content .btn-primary:hover {
+    background-color: rgb(77, 184, 45); /* Your hover color */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Active (clicked) and focus states */
+.content .btn-primary:focus, 
+.content .btn-primary:active {
+    background-color: rgb(77, 184, 45) !important; /* Keep the same color on click */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Maintain the box-shadow */
+    border: none; /* Prevent any border change */
+}
+
+
+
+.featured-img-container {
+    flex: 1; /* Allow the image to take space on the right */
+    margin-left: 20px; /* Add some margin */
+    /* border: 2px solid black; */
+    /* height: 100vh; */
+}
+
+.featured-img {
+    height: 70vh;
+    border-radius: 20%;
+}
+
+@media screen and (max-width: 768px) {
+    .Home_container {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+        align-items: center; /* Center content */
+        text-align: center; /* Center the text for mobile */
+    }
+
+    .content {
+        margin-bottom: 10px;
+        padding-bottom: 0px;
+        padding-top: 10px;
+        margin-top: 20px;
+    }
+
+    .content button {
+        width: 50%; /* Set button width */
+    }
+
+    .featured-img-container {
+        margin: 15px 0px;
+        padding: 0px;
+        
+    }
+
+    .featured-img {
+        height: 40vh; /* Make the image smaller */
+        margin-top: 10px; /* Reduced space above the image */
+    }
+}

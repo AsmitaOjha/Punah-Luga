@@ -1,0 +1,79 @@
+.Who_main_container{
+    background-color: rgb(242, 247, 247);
+    padding:20px;
+}
+.choose_who_you_are_container {
+    display: flex; /* Use flexbox for the main container */
+    justify-content: space-between; /* Space the child elements */
+   
+    /* border: 3px solid coral; */
+    padding: 20px; /* Add padding for space inside the container */
+}
+h1 {
+    margin-bottom: 20px; /* Add space below the title */
+}
+
+
+.half {
+    flex: 1; /* Allow both sides to take equal space */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.btn {
+    margin: 10px; /* Space between buttons */
+    padding: 10px 20px; /* Add padding inside the buttons */
+    transition: background-color 0.5s; /* Smooth transition for hover effect */
+    width: 40%; /* Make buttons take the full width */
+    
+}
+
+
+.Who_main_container .btn-primary {
+    background-color: rgb(197, 100, 116); /* Your desired color */
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adjust these values as needed */
+    transition: box-shadow 0.3s ease; 
+}
+
+.Who_main_container .btn-primary {
+    background-color: rgb(197, 100, 116); /* Your desired color */
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adjust these values as needed */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Include transition for color */
+}
+
+/* Hover state */
+.Who_main_container .btn-primary:hover {
+    background-color: rgb(77, 184, 45); /* Your hover color */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Active (clicked) and focus states */
+.Who_main_container .btn-primary:focus, 
+.Who_main_container .btn-primary:active {
+    background-color: rgb(77, 184, 45) !important; /* Keep the same color on click */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Maintain the box-shadow */
+    border: none; /* Prevent any border change */
+}
+
+
+
+.description {
+    margin: 5px 0; /* Add margin for spacing */
+    padding: 10px 20px; /* Add padding for space inside the paragraph */
+    background-color: lightgray; /* Give it a background color */
+    border-radius: 5px; /* Round edges */
+    width: 100%; /* Make it full width */
+    text-align: center; /* Center the text */
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .choose_who_you_are_container {
+        flex-direction: column; /* Stack elements vertically on mobile */
+    }
+}

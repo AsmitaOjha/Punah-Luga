@@ -1,0 +1,24 @@
+.circular-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center the percentage text */
+  position: relative; /* Make it relative to position the percentage text */
+  width: 200px; /* Adjusted the width to fit the new larger circle */
+  height: 200px; /* Adjusted the height */
+}
+
+.circular-progress svg {
+  transform: rotate(-90deg); /* Rotate the SVG so the progress starts at the top */
+  width: 100%; /* Ensure the SVG scales properly */
+  height: 100%; /* Ensure the SVG scales properly */
+}
+
+.percentage {
+  position: absolute;
+  top: 50%; /* Center the text vertically */
+  left: 50%; /* Center the text horizontally */
+  transform: translate(-50%, -50%); /* Adjust to center the percentage */
+  font-size: 36px; /* Increased the font size for better visibility */
+  color: #4caf50; /* Set the color to match the progress bar */
+}
