@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import '../Styles/Choose_who_you_are.css'; 
-import { Link } from 'react-router-dom';
+
 
 function Choose_who_you_are() {
     const navigate = useNavigate(); // Initialize navigate function

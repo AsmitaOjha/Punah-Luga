@@ -49,6 +49,41 @@
 .navbar-toggler:focus{
     outline:none;
 }
+/* Styling for the custom profile popup */
+/* Style for the profile menu popup */
+.profile-menu-popup .modal-dialog {
+    position: absolute;
+    /* top: 100%; */
+    top: 5%;
+    right: 5%;
+    margin: 0;
+    width: 150px; /* You can adjust the width if needed */
+  }
+  
+  .profile-menu-popup .modal-content {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-menu-popup .dropdown-item {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .profile-menu-popup .dropdown-item:hover {
+    background-color: #bf18e9;
+    color: #000;
+  }
+  
+  /* Ensuring the modal has no default animation */
+  .profile-menu-popup .fade {
+    transition: none;
+  }
+  
+  
 @media (max-width: 768px) {
     .nav-pills .nav-link{
         margin-bottom: 10px;

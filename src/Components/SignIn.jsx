@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, get } from 'firebase/database';
-import '../Styles/SignIn.css'; 
+import { useNavigate } from 'react-router-dom';
+import '../Styles/SignIn.css';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
     const auth = getAuth();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -20,36 +28,49 @@ const SignIn = () => {
       if (snapshot.exists()) {
         const userData = snapshot.val();
         if (userData.userType === 'donor') {
-          window.location.href = '/donor';
+          navigate('/donor');
+        } else if (userData.userType === 'collector') {
+          navigate('/collector');
+        } else if (userData.userType === 'admin') {
+          navigate('/admin');
         } else {
-          window.location.href = '/collector';
+          setError("Unknown user type");
         }
       } else {
-        console.error("No user data found");
+        setError("No user data found");
       }
     } catch (error) {
-      console.error("Error signing in:", error.message);
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="container-signin">
       <h2>Sign In</h2>
-      <input 
-        className="signin-email"
-        type="email" 
-        placeholder="Email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-      />
-      <input 
-      className="signin-password"
-        type="password" 
-        placeholder="Password" 
-        value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-      />
-      <button  className="signin-complete-button" onClick={handleSignIn}>Sign In</button>
+      <form onSubmit={handleSignIn}>
+        <input 
+          className="signin-email"
+          type="email" 
+          placeholder="Email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          required 
+        />
+        <input 
+          className="signin-password"
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required 
+        />
+        <button className="signin-complete-button" type="submit" disabled={loading}>
+          {loading ? 'Signing In...' : 'Sign In'}
+        </button>
+      </form>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };
