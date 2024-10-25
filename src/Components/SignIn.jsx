@@ -1,7 +1,7 @@
+// SignIn.jsx
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
+import { signIn, getUserData } from '../firebase/auth.js'; // Import the signIn and getUserData functions
 import '../Styles/SignIn.css';
 
 const SignIn = () => {
@@ -16,28 +16,21 @@ const SignIn = () => {
     setError('');
     setLoading(true);
 
-    const auth = getAuth();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const user = await signIn(email, password); // Call the signIn function
 
-      const db = getDatabase();
-      const userRef = ref(db, 'users/' + user.uid);
-      const snapshot = await get(userRef);
-
-      if (snapshot.exists()) {
-        const userData = snapshot.val();
-        if (userData.userType === 'donor') {
-          navigate('/donor');
-        } else if (userData.userType === 'collector') {
-          navigate('/collector');
-        } else if (userData.userType === 'admin') {
-          navigate('/admin');
-        } else {
-          setError("Unknown user type");
-        }
+      // Get user data from the database
+      const userData = await getUserData(user.uid);
+      
+      // Navigate based on user type
+      if (userData.userType === 'donor') {
+        navigate('/donor');
+      } else if (userData.userType === 'collector') {
+        navigate('/collector');
+      } else if (userData.userType === 'admin') {
+        navigate('/admin');
       } else {
-        setError("No user data found");
+        setError("Unknown user type");
       }
     } catch (error) {
       setError(error.message);

@@ -52,10 +52,10 @@ function Navbar({ scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorks
   return (
     <nav className="navbar navbar-expand-lg sticky-top bg-transparent">
       <div className="container-fluid">
-        <a className="navbar-brand ms-5" href="#home">
+        <Link className="navbar-brand ms-5" to="/">
           <img src={logo} alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
           Punah-Luga
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

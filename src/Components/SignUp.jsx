@@ -1,14 +1,14 @@
 // SignUp.jsx
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from 'firebase/database';
 import { Link } from 'react-router-dom';
-import '../Styles/SignUp.css'; 
+import {signUp} from '../firebase/auth.js';
+import '../Styles/SignUp.css';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('donor');
+  const [error, setError] = useState(''); // To hold any error messages
 
   const handleSignUp = async () => {
     // Validate email and password
@@ -17,32 +17,21 @@ const SignUp = () => {
       return;
     }
 
-    const auth = getAuth();
     try {
-      // Create a new user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Get a reference to the database
-      const db = getDatabase();
-      
-      // Save user data in the Realtime Database
-      await set(ref(db, 'users/' + user.uid), {
-        email: email,
-        userType: userType, 
-        active: true, 
-      });
-
+      // Call the signUp function from auth.js
+      await signUp(email, password, userType);
       alert("Sign up successful! You can now sign in.");
     } catch (error) {
       console.error("Error signing up:", error.message);
       alert("Error signing up: " + error.message);
+      setError(error.message); // Update error state
     }
   };
 
   return (
     <div className="container-signup">
       <h2>Sign Up</h2>
+      {error && <p className="error-message">{error}</p>} {/* Display error message */}
       <div className="signup">
         <input 
           className="signup-email"
