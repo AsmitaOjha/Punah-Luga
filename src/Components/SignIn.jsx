@@ -1,7 +1,8 @@
-// SignIn.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signIn, getUserData } from '../firebase/auth.js'; // Import the signIn and getUserData functions
+import { signInWithEmailAndPassword } from 'firebase/auth'; // For Authentication
+import { ref, get } from 'firebase/database'; // For Realtime Database
+import { auth, database } from '../firebase/firebaseConfig'; // Import auth and database from firebaseConfig
 import '../Styles/SignIn.css';
 
 const SignIn = () => {
@@ -17,25 +18,35 @@ const SignIn = () => {
     setLoading(true);
 
     try {
-      const user = await signIn(email, password); // Call the signIn function
+      // Sign in with email and password using Firebase Authentication
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      // Get user data from the database
-      const userData = await getUserData(user.uid);
-      
-      // Navigate based on user type
-      if (userData.userType === 'donor') {
-        navigate('/donor');
-      } else if (userData.userType === 'collector') {
-        navigate('/collector');
-      } else if (userData.userType === 'admin') {
-        navigate('/admin');
+      // Fetch userType from Firebase Realtime Database using the user's UID
+      const userRef = ref(database, `users/${user.uid}`); // Reference to the user in Realtime Database
+      const snapshot = await get(userRef); // Get data from the database
+
+      if (snapshot.exists()) {
+        const userData = snapshot.val();
+        const userType = userData.userType; // Retrieve the userType
+
+        // Navigate based on userType
+        if (userType === 'donor') {
+          navigate('/donor');
+        } else if (userType === 'collector') {
+          navigate('/collector');
+        } else if (userType === 'admin') {
+          navigate('/admin');
+        } else {
+          setError('Unknown user type');
+        }
       } else {
-        setError("Unknown user type");
+        setError('User data not found');
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Handle errors from Firebase Authentication
     } finally {
-      setLoading(false);
+      setLoading(false); // Hide loading spinner after completion
     }
   };
 
@@ -43,21 +54,23 @@ const SignIn = () => {
     <div className="container-signin">
       <h2>Sign In</h2>
       <form onSubmit={handleSignIn}>
-        <input 
+        <input
           className="signin-email"
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
+          type="email"
+          placeholder="Email"
+          name="your_email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
         />
-        <input 
+        <input
           className="signin-password"
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
+          type="password"
+          placeholder="Password"
+          name="your_password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button className="signin-complete-button" type="submit" disabled={loading}>
           {loading ? 'Signing In...' : 'Sign In'}

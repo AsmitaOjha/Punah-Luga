@@ -41,7 +41,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/donor" element={<Donor />} />
         <Route path="/collector" element={<Collector />} />
         
