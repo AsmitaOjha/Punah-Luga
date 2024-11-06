@@ -108,6 +108,11 @@ function Navbar({ scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorks
                               <Link className="dropdown-item" to="/collector">Collector Dashboard</Link>
                             </li>
                           )}
+                          {userType === 'admin' && (
+                            <li>
+                              <Link className="dropdown-item" to="/admin">Admin Dashboard</Link>
+                            </li>
+                          )}
                           <li>
                             <a className="dropdown-item" href="#" onClick={handleSignOut}>Logout</a>
                           </li>

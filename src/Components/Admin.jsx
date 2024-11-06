@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, get } from 'firebase/database'; // Correct import for ref and get
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+import Navbar from './Navbar';
+import Footer from './Footer';
 const Admin = () => {
   const [userCounts, setUserCounts] = useState({ donors: 0, collectors: 0 });
   const [users, setUsers] = useState([]);
@@ -93,6 +94,8 @@ const Admin = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className="admin-container">
       <h2>Admin Panel</h2>
       <div>
@@ -111,6 +114,8 @@ const Admin = () => {
         </ul>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
