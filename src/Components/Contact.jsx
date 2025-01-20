@@ -1,4 +1,4 @@
-import backgroundImage from '../assets/images/chritmas.jpg'; // Background image
+import backgroundImage from '../assets/images/bg.jpg'; // Background image
 import Navbar from './Navbar';
 import '../Styles/Contact.css'; // Import styles for this section
 import Footer from './Footer';

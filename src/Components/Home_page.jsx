@@ -1,11 +1,11 @@
 import React from 'react';
 import '../Styles/Home_page.css'; // Import styles for this section
-import backgroundImage from '../assets/images/chritmas.jpg'; // Background image
+import backgroundImage from '../assets/images/bg.jpg'; // Background image
 import donation from '../assets/images/donation1.gif';
 import Navbar from './Navbar';
 // import '../Styles/Navbar.css';
 
-function Home_page({ scrollToChooseSection,scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorksSection }) {
+function Home_page({ scrollToChooseSection,scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorksSection, scrollToAboutus,scrollToWho }) {
     return (
         <div className='Main-home_container'>
             <img src={backgroundImage} alt="Background" className="background-image" />
@@ -13,6 +13,8 @@ function Home_page({ scrollToChooseSection,scrollToHomePage, scrollToWhyDonateSe
               scrollToChooseSection={scrollToHomePage}
               scrollToWhyDonateSection={scrollToWhyDonateSection}
               scrollToHowItWorksSection={scrollToHowItWorksSection}
+              scrollToAboutus={scrollToAboutus}
+              scrollToWho ={scrollToWho}
              />
             <div className='Home_container'>
                 <div className="content"> {/* Align content on the left */}

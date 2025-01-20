@@ -1,0 +1,64 @@
+.admin-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-container h3 {
+    font-size: 1.5rem;
+    color: #16a085;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-container p {
+    font-size: 1rem;
+    color: #34495e;
+    margin: 0.5rem 0;
+  }
+  
+  .admin-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .admin-container ul li {
+    background-color: #ecf0f1;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2c3e50;
+  }
+  
+  .admin-container ul li:nth-child(odd) {
+    background-color: #dfe6e9;
+  }
+  
+  .admin-container ul li span {
+    font-weight: bold;
+  }
+  
+  .admin-container div {
+    margin-top: 1.5rem;
+  }
+  
+  .admin-container .error-message,
+  .admin-container .loading-message {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+  

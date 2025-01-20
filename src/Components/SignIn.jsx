@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth'; // For Authentication
-import { ref, get } from 'firebase/database'; // For Realtime Database
-import { auth, database } from '../firebase/firebaseConfig'; // Import auth and database from firebaseConfig
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth'; // Added sendPasswordResetEmail
+import { ref, get } from 'firebase/database';
+import { auth, database } from '../firebase/firebaseConfig';
 import '../Styles/SignIn.css';
 
 const SignIn = () => {
@@ -10,6 +10,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [resetEmailSent, setResetEmailSent] = useState(false); // State for reset email notification
   const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
@@ -18,19 +19,16 @@ const SignIn = () => {
     setLoading(true);
 
     try {
-      // Sign in with email and password using Firebase Authentication
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Fetch userType from Firebase Realtime Database using the user's UID
-      const userRef = ref(database, `users/${user.uid}`); // Reference to the user in Realtime Database
-      const snapshot = await get(userRef); // Get data from the database
+      const userRef = ref(database, `users/${user.uid}`);
+      const snapshot = await get(userRef);
 
       if (snapshot.exists()) {
         const userData = snapshot.val();
-        const userType = userData.userType; // Retrieve the userType
+        const userType = userData.userType;
 
-        // Navigate based on userType
         if (userType === 'donor') {
           navigate('/donor');
         } else if (userType === 'collector') {
@@ -44,9 +42,32 @@ const SignIn = () => {
         setError('User data not found');
       }
     } catch (error) {
-      setError(error.message); // Handle errors from Firebase Authentication
+      if (error.code === 'auth/user-not-found') {
+        setError('Email not found');
+      } else if (error.code === 'auth/wrong-password') {
+        setError('Incorrect password');
+      } else if (error.code === 'auth/invalid-email') {
+        setError('Invalid email format');
+      } else {
+        setError('Password or email is incorrect');
+      }
+      
     } finally {
-      setLoading(false); // Hide loading spinner after completion
+      setLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setError('');
+    if (!email) {
+      setError('Please enter your email to reset the password.');
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setResetEmailSent(true); // Notify user that the email was sent
+    } catch (error) {
+      setError(error.message);
     }
   };
 
@@ -76,6 +97,14 @@ const SignIn = () => {
           {loading ? 'Signing In...' : 'Sign In'}
         </button>
       </form>
+      <button
+        className="forgot-password-button"
+        onClick={handleForgotPassword}
+        disabled={loading}
+      >
+        Forgot Password?
+      </button>
+      {resetEmailSent && <p className="success-message">Password reset email sent. Please check your inbox.</p>}
       {error && <p className="error-message">{error}</p>}
     </div>
   );

@@ -3,7 +3,7 @@
 :root {
   --font-family: 'Varela Round', sans-serif;
   --primary-color: rgba(255, 255, 255, 0.87);
-  --background-color: #242424;
+  --background-color: rgb(203, 224, 224);
   --header-color: #0c3046;
   --text-color: #2f4858;
   --link-color: #646cff;
@@ -20,12 +20,21 @@
   background-color: var(--background-color);
 }
 
+/* Basic Reset */
+body, h1, h2, h3, p, a, button {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
 }
 
 h1, h2, h3 {
@@ -34,23 +43,23 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 3em; /* Default size for h1 */
+  font-size: 2em;
   line-height: 1.2;
 }
 
 h2 {
-  font-size: 2.5em; /* Default size for h2 */
+  font-size: 1.6em;
   line-height: 1.3;
 }
 
 h3 {
-  font-size: 2em; /* Default size for h3 */
+  font-size: 1.5em;
   line-height: 1.4;
 }
 
 p {
   color: var(--text-color);
-  font-size: 12px; /* Default size for paragraphs */
+  font-size: 1rem;
   line-height: 1.6;
 }
 
@@ -64,6 +73,7 @@ a:hover {
   color: var(--link-hover-color);
 }
 
+/* Button Styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -73,11 +83,12 @@ button {
   font-family: inherit;
   background-color: var(--button-background);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.2s;
 }
 
 button:hover {
   border-color: var(--button-hover-border);
+  background-color: var(--link-hover-color); /* Light background on hover */
 }
 
 button:focus,
@@ -85,6 +96,57 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+button:active {
+  background-color: var(--link-hover-color); /* Active state color */
+}
+
+.error-message {
+  color: var(--primary-color); /* White text color */
+  margin-top: 10px;
+  padding: 10px; /* Padding for better spacing */
+  border: 2px solid #f00; /* Red border */
+  background-color: rgb(203, 224, 224); /* Lighter background color */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1em; /* Standard font size */
+  font-family: var(--font-family); /* Use your specified font */
+  text-align: center; /* Center the text */
+}
+
+/* Style for the Link element */
+.nav-link {
+  font-weight: 500;
+  color: var(--link-color);
+  text-decoration: none;
+  position: relative;
+  display: inline-block; /* Ensure it doesn't stretch the whole width */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Adjusted to put the line just below the text */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--link-color);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* On hover, line will appear below text */
+}
+
+.nav-link:active::after {
+  width: 100%; /* Keep the line when the link is clicked */
+}
+
+.nav-link:hover {
+  color: var(--link-hover-color);
+}
+
+
+
+/* Light Mode Styles */
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--light-text-color);
@@ -100,24 +162,85 @@ button:focus-visible {
   }
 }
 
+
+
+
+/* Mobile Responsiveness */
 @media (max-width: 767px) {
   :root {
-    font-size: 1em; /* Base font size for mobile */
+    font-size: 1em;
   }
 
   h1 {
-    font-size: 1.8em; /* Adjusted size for h1 on mobile */
+    font-size: 1.8em;
   }
 
   h2 {
-    font-size: 1.5em; /* Adjusted size for h2 on mobile */
+    font-size: 1.5em;
+    
   }
 
-  h3,h4,h5 {
-    font-size: 1.3em; /* Adjusted size for h3 on mobile */
+  h3, h4, h5 {
+    font-size: 1.3em;
   }
 
   p {
-    font-size: 0.9em; /* Adjusted size for paragraphs on mobile */
+    font-size: 0.9em;
   }
+}
+
+/* Flex Card Styling */
+.card-body {
+  flex: 1 1 auto;
+  padding-top: 30px;
+}
+
+.card {
+  margin: 10px;
+}
+
+/* Container Styling */
+.container-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+}
+
+.success-message, .error-message {
+  font-size: 0.9em;
+  color: var(--link-hover-color);
+  margin-top: 10px;
+}
+
+.reset-password-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.reset-email-input {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reset-password-button {
+  padding: 10px;
+  background-color: var(--button-background);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-password-button:hover {
+  background-color: var(--link-hover-color);
 }

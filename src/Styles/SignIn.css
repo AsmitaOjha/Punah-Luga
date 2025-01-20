@@ -1,5 +1,5 @@
  .container-signin {
-    background-color: #9e15aa;
+    
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -9,7 +9,7 @@
   
   .container-signin h2 {
     text-align: center;
-    color: #ffffff;
+    color: #3a3f9e;
     margin-bottom: 20px;
   }
   
@@ -36,5 +36,34 @@
   
   .signin-complete-button:hover {
     background-color: #45a049;
+  }
+  .forgot-password-button {
+    background-color:#646cff;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  
+  .forgot-password-button:hover {
+    /* color: #020202; */
+    background-color: #3a3f9e;
+  }
+  
+  
+  .success-message {
+  
+    /* background-color: #646cff; */
+    color: #ffffff;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
+    border: 2px solid rgb(255, 0, 0);
+    background-color: red;
   }
   

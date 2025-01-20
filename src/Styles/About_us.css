@@ -1,0 +1,61 @@
+.about-us-section {
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  font-family: "Varela Round", sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-us-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.about-us-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+  margin-bottom: 1.5rem;
+}
+
+.team-list {
+  display: flex; /* Makes it a row layout */
+  flex-wrap: wrap; /* Allows wrapping to the next row when space runs out */
+  justify-content: center; /* Center-aligns the content */
+  gap: 20px; /* Adds space between items */
+  margin-top: 2rem; /* Adds some space above the team section */
+  padding: 0;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column; /* Stack image and name vertically */
+  align-items: center; /* Center-aligns the image and name */
+  width: 150px; /* Adjust width as needed */
+  text-align: center;
+}
+
+.team-member-image {
+  width: 100px; /* Size of the image */
+  height: 100px; /* Make the image a perfect square */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image fits within the circle */
+  border: 2px solid #16a085; /* Adds a border to match the theme color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a polished look */
+}
+
+.team-member-name {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #16a085;
+}

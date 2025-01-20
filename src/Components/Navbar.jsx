@@ -7,7 +7,7 @@ import { ref, get, child } from 'firebase/database';
 import { database } from '../firebase/firebaseConfig';  // Adjusted import path for firebaseConfig
 import Modal from 'react-bootstrap/Modal';
 
-function Navbar({ scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorksSection }) {
+function Navbar({ scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorksSection, scrollToAboutus,scrollToWho }) {
   const auth = getAuth();
   const currentUser = auth.currentUser;
   const navigate = useNavigate();
@@ -69,23 +69,26 @@ function Navbar({ scrollToHomePage, scrollToWhyDonateSection, scrollToHowItWorks
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav justify-content-center w-100">
-            <li className="nav-item mx-5">
+            <li className="nav-item mx-3">
               <Link className="nav-link" to="/" onClick={scrollToHomePage}>Home</Link>
             </li>
-            <li className="nav-item mx-5">
-              <Link className="nav-link" to="/about_us">About Us</Link>
-            </li>
-            <li className="nav-item mx-4">
+            
+
+
+            <li className="nav-item mx-3">
               <a className="nav-link" href="#" onClick={scrollToWhyDonateSection}>Why Donate Clothes</a>
             </li>
-            <li className="nav-item mx-4">
+            <li className="nav-item mx-3">
+              <a className="nav-link" href="#" onClick={scrollToAboutus}>About us</a>
+            </li>
+            <li className="nav-item mx-3">
               <a className="nav-link" href="#" onClick={scrollToHowItWorksSection}>How it works</a>
             </li>
-            <li className="nav-item mx-5">
+            <li className="nav-item mx-3">
               <Link className="nav-link" to="/contact">Contact Us</Link>
             </li>
             {/* Sign Up / Profile Redirect based on user type */}
-            <li className="nav-item mx-5">
+            <li className="nav-item mx-3">
               {!currentUser ? (
                 <Link className="nav-link" to="/signup">Sign Up</Link>
               ) : (

@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { getDatabase, ref, push, set, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-import Navbar from './Navbar';
 import Modal from 'react-modal';
 import '../Styles/Donor.css';
 
+import Navbar1 from './Navbar1';
+
 Modal.setAppElement('#root');
 
-function Donor() {
+function donor() {
   const [profile, setProfile] = useState({ name: '', address: '', details: '' });
   const [donation, setDonation] = useState({ clothName: '', quantity: '', image: null, collectorId: '', name: '', contact: '', location: '' });
   const [collectors, setCollectors] = useState([]);
@@ -160,10 +161,10 @@ function Donor() {
 
   return (
     <div className="donor-container">
-      <Navbar />
+      <Navbar1/>
       <div className="container donor-dashboard">
         <h1 className="text-center">Donor Dashboard</h1>
-        <h2 className="text-center">User Type: Donor</h2>
+      
 
         {/* Profile Setup Section */}
         <div className="card">
@@ -203,7 +204,7 @@ function Donor() {
               </form>
             ) : (
               <div>
-                <h5>Profile Details</h5>
+               
                 <p><strong>Name:</strong> {profile.name}</p>
                 <p><strong>Address:</strong> {profile.address}</p>
                 <p><strong>Details:</strong> {profile.details}</p>
@@ -318,4 +319,4 @@ function Donor() {
   );
 }
 
-export default Donor;
+export default donor;

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, get } from 'firebase/database'; // Correct import for ref and get
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Navbar from './Navbar';
+import Navbar1 from './Navbar1';
 import Footer from './Footer';
+import '../Styles/Admin.css'; 
+
 const Admin = () => {
   const [userCounts, setUserCounts] = useState({ donors: 0, collectors: 0 });
   const [users, setUsers] = useState([]);
@@ -95,7 +97,7 @@ const Admin = () => {
 
   return (
     <>
-    <Navbar/>
+    <Navbar1/>
     <div className="admin-container">
       <h2>Admin Panel</h2>
       <div>
